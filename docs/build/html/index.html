@@ -33,8 +33,51 @@
             
   <section id="welcome-to-application-of-big-data-s-documentation">
 <h1>Welcome to Application of big data’s documentation!<a class="headerlink" href="#welcome-to-application-of-big-data-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p><strong>Application of bigdata</strong> (/Our project/) is a python project, that train us to
+apply tools and concepts seen in course.  It pulls data from the
+<cite>DataSet ofHome Credit Risk Classification &lt;https://www.kaggle.com/c/home-credit-default-risk/overview&gt;</cite>.</p>
+<section id="part-1">
+<h2>Part 1 :<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
+<p>In the first part, we build a machine learning project using jupyter notebook, github, a conda envirenement and sphinx.
+We tried to separate the different workflow into different scripts, one for the data preparation,
+one for the data preparation, one for the feature engineering, one for the models training and a
+last one for the prediction.</p>
+<p><strong>Data preparation</strong> :</p>
+<p>We first clean the dataset from all the NAN values and the columns that contained more than 30% of NAN values.</p>
+<ul class="simple">
+<li><p><strong>init()</strong>, will return the cleaned dataset</p></li>
+</ul>
+<p><strong>Feature engineering</strong> :</p>
+<p>We have done a correlation matrix, and from that we have kept the most correlacted features and deleted the least correlated ones.</p>
+<ul class="simple">
+<li><p><strong>matrice_corr(df_train,df_test)</strong>, is a void function that show us the correlation matrix</p></li>
+<li><p><strong>setup_train(df_train,df_test)</strong>, will return four values (X_train, X_test, y_train and y_test)</p></li>
+</ul>
+<p><strong>Models training</strong> :</p>
+<p>We had to train three models: XGboost, Random Forest and Gradient Boosting.
+The XGboost model, is done with the optimized distributed gradient boosting library, XGboost.
+The Ramdom Forest model, consists of many decision trees.
+The Gradient Boosting model, is an ensemble of weak prediction models(decision trees).</p>
+<ul class="simple">
+<li><p><strong>XGBC_model(X_train,X_test,y_train,y_test,learning_rate,max_depth,scale_pos_weight)</strong></p></li>
+<li><p><strong>RF_model(X_train,X_test,y_train,y_test)</strong></p></li>
+<li><p><strong>GB_model(X_train,X_test,y_train,y_test)</strong></p></li>
+</ul>
+<p>Those functions train the different models.</p>
+<p><strong>Prediction</strong> :</p>
+<p>All three model, succeed in predicting if a client could get a loan. Most had each around 0.91 of accuracy.</p>
+</section>
+<section id="part-2">
+<h2>Part 2 :<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
+<p>In this part, we got introduced to MLFLOW. We decided to track the parameters of the XGboost model.
+It helped us to choose the best parameter, to have better result, with our model.</p>
+</section>
+<section id="part-3">
+<h2>Part 3 :<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h2>
+<p>Finaly, we used SHAP Library on our XGboost model to understand it.</p>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
