@@ -58,6 +58,10 @@ last one for the prediction.</p>
 </ul>
 <p><strong>Feature engineering</strong> :</p>
 <p>We have done a correlation matrix, and from that we have kept the most correlacted features and deleted the least correlated ones.</p>
+<p>Here is the correlation matrix :</p>
+<div class="figure align-center">
+<img alt="Image à rajouter" src="_images/matrice_de_corr.png" />
+</div>
 <ul class="simple">
 <li><p><strong>matrice_corr(df_train,df_test)</strong>, is a void function that show us the correlation matrix</p></li>
 <li><p><strong>setup_train(df_train,df_test)</strong>, will return four values (X_train, X_test, y_train and y_test)</p></li>
@@ -74,14 +78,17 @@ The Gradient Boosting model, is an ensemble of weak prediction models(decision t
 </ul>
 <p>Those functions train the different models.</p>
 <p>All three model, succeed in predicting if a client could get a loan. Most had each around 0.91 of accuracy.</p>
+<div class="figure align-center">
+<img alt="Image à rajouter" src="_images/capture_accu.png" />
+</div>
 </div>
 <div class="section" id="part-2">
 <h2>Part 2 :<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
 <p>In this part, we got introduced to MLFLOW. We decided to track the parameters of the XGboost model.
 It helped us to choose the best parameter, to have better result, with our model.</p>
-<p>Here is the graph for a specific value :</p>
+<p>Here we can have a look at MLFlow:</p>
 <div class="figure align-center">
-<img alt="Texte alternatif" src="_images/shap_1.png" />
+<img alt="Image à rajouter" src="./images/.png" />
 </div>
 </div>
 <div class="section" id="part-3">
