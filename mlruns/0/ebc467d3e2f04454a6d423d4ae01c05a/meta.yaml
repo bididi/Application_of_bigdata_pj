@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Gailhac/Application_of_bigdata_pj/mlruns/0/ebc467d3e2f04454a6d423d4ae01c05a/artifacts
+end_time: 1637422483401
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: ebc467d3e2f04454a6d423d4ae01c05a
+run_uuid: ebc467d3e2f04454a6d423d4ae01c05a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1637422471801
+status: 3
+tags: []
+user_id: Gailhac
