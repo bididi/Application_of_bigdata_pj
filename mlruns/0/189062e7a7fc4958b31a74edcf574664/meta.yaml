@@ -2,7 +2,7 @@ artifact_uri: file:///C:/Users/Gailhac/Application_of_bigdata_pj/mlruns/0/189062
 end_time: 1637421345414
 entry_point_name: ''
 experiment_id: '0'
-lifecycle_stage: active
+lifecycle_stage: deleted
 name: ''
 run_id: 189062e7a7fc4958b31a74edcf574664
 run_uuid: 189062e7a7fc4958b31a74edcf574664

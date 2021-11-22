@@ -2,7 +2,7 @@ artifact_uri: file:///C:/Users/Gailhac/Application_of_bigdata_pj/mlruns/0/ab1520
 end_time: 1637420160054
 entry_point_name: ''
 experiment_id: '0'
-lifecycle_stage: active
+lifecycle_stage: deleted
 name: ''
 run_id: ab1520fba5a145ff89623a29be868a59
 run_uuid: ab1520fba5a145ff89623a29be868a59
