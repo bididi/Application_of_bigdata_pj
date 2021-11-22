@@ -74,7 +74,7 @@ It helped us to choose the best parameter, to have better result, with our model
 
 Here we can have a look at MLFlow:
 
-.. figure:: ./images/.png
+.. figure:: ./images/unknown.png
    :alt: Image à rajouter
    :align: center
 
