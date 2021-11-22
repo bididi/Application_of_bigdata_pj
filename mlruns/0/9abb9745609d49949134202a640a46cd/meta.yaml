@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/9abb9745609d49949134202a640a46cd/artifacts
+end_time: 1637597889762
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 9abb9745609d49949134202a640a46cd
+run_uuid: 9abb9745609d49949134202a640a46cd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1637597877966
+status: 3
+tags: []
+user_id: viann
