@@ -10,6 +10,14 @@ Welcome to Application of big data's documentation!
 apply tools and concepts seen in course.  It pulls data from the 
 `DataSet ofHome Credit Risk Classification <https://www.kaggle.com/c/home-credit-default-risk/overview>`.
 
+To run our program correctly, you will need to run the different python scripts in the following order :
+
+	1. Cleaning_Dataset.ipynb
+	2. Features_Engineering.ipynb
+	3. Training_model.ipynb
+	4. Shap.ipynb
+	
+
 Part 1 :
 ---------
 
@@ -18,9 +26,10 @@ We tried to separate the different workflow into different scripts, one for the 
 one for the data preparation, one for the feature engineering, one for the models training and a 
 last one for the prediction.
 
+
 **Data preparation** :
 
-We first clean the dataset from all the NAN values and the columns that contained more than 30% of NAN values.
+We first clean the dataset from all the NAN values.
 
 - **init()**, will return the cleaned dataset
 
@@ -28,10 +37,16 @@ We first clean the dataset from all the NAN values and the columns that containe
 
 We have done a correlation matrix, and from that we have kept the most correlacted features and deleted the least correlated ones.
 
+Here is the correlation matrix :
+
+.. figure:: ./images/matrice_de_corr.png
+   :alt: Image à rajouter
+   :align: center
+
 - **matrice_corr(df_train,df_test)**, is a void function that show us the correlation matrix
 - **setup_train(df_train,df_test)**, will return four values (X_train, X_test, y_train and y_test)
 
-**Models training** : 
+**Models training and predict** : 
 
 We had to train three models: XGboost, Random Forest and Gradient Boosting.
 The XGboost model, is done with the optimized distributed gradient boosting library, XGboost.
@@ -44,9 +59,12 @@ The Gradient Boosting model, is an ensemble of weak prediction models(decision t
 
 Those functions train the different models.
 
-**Prediction** : 
-
 All three model, succeed in predicting if a client could get a loan. Most had each around 0.91 of accuracy.
+
+.. figure:: ./images/capture_accu.png
+   :alt: Image à rajouter
+   :align: center
+
 
 Part 2 :
 ---------
@@ -54,10 +72,47 @@ Part 2 :
 In this part, we got introduced to MLFLOW. We decided to track the parameters of the XGboost model.
 It helped us to choose the best parameter, to have better result, with our model.
 
+Here we can have a look at MLFlow:
+
+.. figure:: ./images/.png
+   :alt: Image à rajouter
+   :align: center
+
+
 Part 3 :
 ---------
 
 Finaly, we used SHAP Library on our XGboost model to understand it.
+We can visualize three graph by running the following function. 
+
+The first one is to visualize the explainations for a specific value,
+we choose to select the 100th value, and we observed that the day of the last time the person changed his phone had a lot of influence on the 
+result of the prediction.
+
+The second, is a the same as the one just seen but for all the values of the dataset. We can see the day of birth is the most influent between all the features.
+
+The last one, is a summary plot for each class of the dataset.
+
+Here is the graph for a specific value :
+
+.. figure:: ./images/shap_1.png
+   :alt: Texte alternatif
+   :align: center
+   
+Here is the graph for all values :
+
+.. figure:: ./images/shap_2.png
+   :alt: Texte alternatif
+   :align: center
+
+Here a summary plot for each class on the whole dataset :
+
+.. figure:: ./images/shap_3.png
+   :alt: Texte alternatif
+   :align: center
+   
+   
+- **get_explainer(xg_clf,X_train_test)**, is a void function that print the three graphs
 
 .. toctree::
    :maxdepth: 2
@@ -68,6 +123,4 @@ Finaly, we used SHAP Library on our XGboost model to understand it.
 Indices and tables
 ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
