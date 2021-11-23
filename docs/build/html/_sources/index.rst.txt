@@ -53,9 +53,9 @@ The XGboost model, is done with the optimized distributed gradient boosting libr
 The Ramdom Forest model, consists of many decision trees.
 The Gradient Boosting model, is an ensemble of weak prediction models(decision trees).
 
-- **XGBC_model(X_train,X_test,y_train,y_test,learning_rate,max_depth,scale_pos_weight)**
-- **RF_model(X_train,X_test,y_train,y_test)**
-- **GB_model(X_train,X_test,y_train,y_test)**
+- **XGBC_model(X_train,X_test,y_train,y_test,learning_rate,max_depth,scale_pos_weight)**, The XGBOOST model is a supervised learning algorithm whose principle is to combine the results of a set of models. The idea is simple: instead of using a single model, the algorithm will use several which will then be combined to obtain a single result .
+- **RF_model(X_train,X_test,y_train,y_test)**, The random forest algorithm performs parallel learning on multiple randomly constructed decision trees trained on different subsets of data.
+- **GB_model(X_train,X_test,y_train,y_test)**, Gradient boosting is a machine learning technique used in regression and classification tasks, among others. It gives a prediction model in the form of an ensemble of weak prediction models, which are typically decision trees. When a decision tree is the weak learner, the resulting algorithm is called gradient-boosted trees; it usually outperforms random forest.
 
 Those functions train the different models.
 
@@ -77,6 +77,32 @@ Here we can have a look at MLFlow:
 .. figure:: ./images/unknown.png
    :alt: Image à rajouter
    :align: center
+   
+To deploy the model in a local REST server in order to establish predictions we just have to execute this command using the id of run mlflow :
+
+.. code-block:: batch
+  
+  mlflow models serve --model-uri runs:/8518896a4caa45e696754f20df19ff47/model --port 1244
+
+
+After that it will then be possible to request this local address to access the model with :
+
+.. code-block:: batch
+  
+  curl http://127.0.0.1:1244/invocations
+
+
+or with python package requests :
+
+.. code-block:: python
+  
+  import json
+  import requests
+  
+  url = 'https://127.0.0.1:1244/invocations'
+  headers = {'Content-Type' : 'application/json'}
+  request_data = json.dumps(...)
+  response = request.post(url,request_data,headers=headers)
 
 
 Part 3 :

@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/ab9ead902bf24107bbb8638f63a629fa/artifacts
+end_time: 1637671946806
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: ab9ead902bf24107bbb8638f63a629fa
+run_uuid: ab9ead902bf24107bbb8638f63a629fa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1637671934837
+status: 3
+tags: []
+user_id: Gailhac

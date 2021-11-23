@@ -4,15 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome to Application of big data’s documentation! &#8212; Application of big data 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
    
@@ -31,7 +31,7 @@
 
           <div class="body" role="main">
             
-  <section id="welcome-to-application-of-big-data-s-documentation">
+  <div class="section" id="welcome-to-application-of-big-data-s-documentation">
 <h1>Welcome to Application of big data’s documentation!<a class="headerlink" href="#welcome-to-application-of-big-data-s-documentation" title="Permalink to this headline">¶</a></h1>
 <p><strong>Application of bigdata</strong> (/Our project/) is a python project, that train us to
 apply tools and concepts seen in course.  It pulls data from the
@@ -45,7 +45,7 @@ apply tools and concepts seen in course.  It pulls data from the
 <li><p>Shap.ipynb</p></li>
 </ol>
 </div></blockquote>
-<section id="part-1">
+<div class="section" id="part-1">
 <h2>Part 1 :<a class="headerlink" href="#part-1" title="Permalink to this headline">¶</a></h2>
 <p>In the first part, we build a machine learning project using jupyter notebook, github, a conda envirenement and sphinx.
 We tried to separate the different workflow into different scripts, one for the data preparation,
@@ -59,9 +59,9 @@ last one for the prediction.</p>
 <p><strong>Feature engineering</strong> :</p>
 <p>We have done a correlation matrix, and from that we have kept the most correlacted features and deleted the least correlated ones.</p>
 <p>Here is the correlation matrix :</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Image à rajouter" src="_images/matrice_de_corr.png" />
-</figure>
+</div>
 <ul class="simple">
 <li><p><strong>matrice_corr(df_train,df_test)</strong>, is a void function that show us the correlation matrix</p></li>
 <li><p><strong>setup_train(df_train,df_test)</strong>, will return four values (X_train, X_test, y_train and y_test)</p></li>
@@ -72,26 +72,44 @@ The XGboost model, is done with the optimized distributed gradient boosting libr
 The Ramdom Forest model, consists of many decision trees.
 The Gradient Boosting model, is an ensemble of weak prediction models(decision trees).</p>
 <ul class="simple">
-<li><p><strong>XGBC_model(X_train,X_test,y_train,y_test,learning_rate,max_depth,scale_pos_weight)</strong></p></li>
-<li><p><strong>RF_model(X_train,X_test,y_train,y_test)</strong></p></li>
-<li><p><strong>GB_model(X_train,X_test,y_train,y_test)</strong></p></li>
+<li><p><strong>XGBC_model(X_train,X_test,y_train,y_test,learning_rate,max_depth,scale_pos_weight)</strong>, The XGBOOST model is a supervised learning algorithm whose principle is to combine the results of a set of models. The idea is simple: instead of using a single model, the algorithm will use several which will then be combined to obtain a single result .</p></li>
+<li><p><strong>RF_model(X_train,X_test,y_train,y_test)</strong>, The random forest algorithm performs parallel learning on multiple randomly constructed decision trees trained on different subsets of data.</p></li>
+<li><p><strong>GB_model(X_train,X_test,y_train,y_test)</strong>, Gradient boosting is a machine learning technique used in regression and classification tasks, among others. It gives a prediction model in the form of an ensemble of weak prediction models, which are typically decision trees. When a decision tree is the weak learner, the resulting algorithm is called gradient-boosted trees; it usually outperforms random forest.</p></li>
 </ul>
 <p>Those functions train the different models.</p>
 <p>All three model, succeed in predicting if a client could get a loan. Most had each around 0.91 of accuracy.</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Image à rajouter" src="_images/capture_accu.png" />
-</figure>
-</section>
-<section id="part-2">
+</div>
+</div>
+<div class="section" id="part-2">
 <h2>Part 2 :<a class="headerlink" href="#part-2" title="Permalink to this headline">¶</a></h2>
 <p>In this part, we got introduced to MLFLOW. We decided to track the parameters of the XGboost model.
 It helped us to choose the best parameter, to have better result, with our model.</p>
 <p>Here we can have a look at MLFlow:</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Image à rajouter" src="_images/unknown.png" />
-</figure>
-</section>
-<section id="part-3">
+</div>
+<p>To deploy the model in a local REST server in order to establish predictions we just have to execute this command using the id of run mlflow :</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span>mlflow models serve --model-uri runs:/8518896a4caa45e696754f20df19ff47/model --port 1244
+</pre></div>
+</div>
+<p>After that it will then be possible to request this local address to access the model with :</p>
+<div class="highlight-batch notranslate"><div class="highlight"><pre><span></span>curl http://127.0.0.1:1244/invocations
+</pre></div>
+</div>
+<p>or with python package requests :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://127.0.0.1:1244/invocations&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Content-Type&#39;</span> <span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">}</span>
+<span class="n">request_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="n">request_data</span><span class="p">,</span><span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-3">
 <h2>Part 3 :<a class="headerlink" href="#part-3" title="Permalink to this headline">¶</a></h2>
 <p>Finaly, we used SHAP Library on our XGboost model to understand it.
 We can visualize three graph by running the following function.</p>
@@ -101,30 +119,30 @@ result of the prediction.</p>
 <p>The second, is a the same as the one just seen but for all the values of the dataset. We can see the day of birth is the most influent between all the features.</p>
 <p>The last one, is a summary plot for each class of the dataset.</p>
 <p>Here is the graph for a specific value :</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Texte alternatif" src="_images/shap_1.png" />
-</figure>
+</div>
 <p>Here is the graph for all values :</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Texte alternatif" src="_images/shap_2.png" />
-</figure>
+</div>
 <p>Here a summary plot for each class on the whole dataset :</p>
-<figure class="align-center">
+<div class="figure align-center">
 <img alt="Texte alternatif" src="_images/shap_3.png" />
-</figure>
+</div>
 <ul class="simple">
 <li><p><strong>get_explainer(xg_clf,X_train_test)</strong>, is a void function that print the three graphs</p></li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
-</section>
-</section>
-<section id="indices-and-tables">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</section>
+</div>
 
 
           </div>
@@ -155,7 +173,7 @@ result of the prediction.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -177,7 +195,7 @@ result of the prediction.</p>
       &copy;2021, Vianney.G Louis.G Elodie.G.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
