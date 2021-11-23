@@ -77,6 +77,32 @@ Here we can have a look at MLFlow:
 .. figure:: ./images/unknown.png
    :alt: Image à rajouter
    :align: center
+   
+To deploy the model in a local REST server in order to establish predictions we just have to execute this command using the id of run mlflow :
+
+.. code-block:: batch
+  
+  mlflow models serve --model-uri runs:/8518896a4caa45e696754f20df19ff47/model --port 1244
+
+
+After that it will then be possible to request this local address to access the model with :
+
+.. code-block:: batch
+  
+  curl http://127.0.0.1:1244/invocations
+
+
+or with python package requests :
+
+.. code-block:: python
+  
+  import json
+  import requests
+  
+  url = 'https://127.0.0.1:1244/invocations'
+  headers = {'Content-Type' : 'application/json'}
+  request_data = json.dumps(...)
+  response = request.post(url,request_data,headers=headers)
 
 
 Part 3 :
